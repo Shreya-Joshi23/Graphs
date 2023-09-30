@@ -1,4 +1,6 @@
 //Prim's algorithm is used to find minimum spanning tree
+//Time complexity - O(ElogV)
+//Space complexity - O(E)
 
 #include<bits/stdc++.h>
 using namespace std;
