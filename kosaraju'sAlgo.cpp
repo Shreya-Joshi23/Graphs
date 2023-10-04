@@ -1,6 +1,8 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+//This algo is used to find no. of strongly connected components
+
 void dfs(int node,vector<int>adj[],vector<int>&visited,stack<int>&st){
     visited[node]=1;
     for(auto it:adj[node]){
@@ -24,6 +26,7 @@ int kosarajuAlgo(int V,vector<int>adj[]){
     stack<int>st;
     vector<int>visited(V,0);
 
+    //Step1:Sort all the edges according to finishing time
     for(int i=0;i<V;i++){
         if(!visited[i]){
             dfs(i,adj,visited,st);
@@ -31,7 +34,7 @@ int kosarajuAlgo(int V,vector<int>adj[]){
     }
 
 
-    //Reverse all the edges
+    //Step2:Reverse all the edges
     vector<int>adjR[V];
     for(int i=0;i<V;i++){
         visited[i]=0;
@@ -40,8 +43,7 @@ int kosarajuAlgo(int V,vector<int>adj[]){
         }
     }
 
-    //Do the dfs until the stack is empty
-
+    //Step3:Do the dfs until the stack is empty
     int noOfScc=0;
     while(!st.empty()){
         int node=st.top();
